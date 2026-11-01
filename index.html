@@ -162,8 +162,8 @@ footer{padding-block:22px;color:var(--muted);font-size:.85rem}
 <div class="bar"><div class="wrap">
   <a class="brand" href="#top">Muñoz Rentals</a>
   <div class="lang" role="group" aria-label="Idioma / Language">
-    <button id="l-es" aria-pressed="true" onclick="setLang('es')">ES</button>
-    <button id="l-en" aria-pressed="false" onclick="setLang('en')">EN</button>
+    <button id="l-es" aria-pressed="true" onclick="setLang('es',true)">ES</button>
+    <button id="l-en" aria-pressed="false" onclick="setLang('en',true)">EN</button>
   </div>
 </div></div>
 
@@ -337,25 +337,30 @@ footer{padding-block:22px;color:var(--muted);font-size:.85rem}
 <script>
 const PHONE="13362575172";
 const T={
- en:{eyebrow:"Bounce houses · Tables · Chairs · Canopy · Bull",h1:"Make your party <em>bounce</em>!",lead:"Wet or dry inflatables plus tables and chairs in one package from $199. We deliver, set up and pick up.",cta1:"See packages",cta2:"Party calculator",b1:"Birthdays",b2:"Quinceañeras",b3:"Backyard parties",b4:"Church events",
- "k2-eye":"Backyard party packages","k2-h":"One price, the whole party",from:"Packages from",wet:"Wet",dry:"or dry",i1:"Bounce house or inflatable slide",i2:"White folding tables and chairs",i3:"Delivery, setup and pickup",i4:"Clean and safe inflatables",ask:"Ask about our $199 starter package.",g1:"Castle with slide",g2:"Jungle combo",g3:"Double water slide",g4:"Tables and chairs included",g5:"Bounce house with play area",
- "s-eye":"What we rent","s-h":"Everything for your event, in one place","s-p":"One number to book the bounce house, the furniture and the shade. Fewer calls, more party.",
- v1h:"Bounce houses",v1p:"Castles, combos and slides. Each one can be rented wet or dry.",v2h:"Tables",v2p:"Tables to seat all your guests for dinner and cake.",v3h:"Chairs",v3p:"As many as you need, delivered and picked up on time.",v4h:"Canopy",v4p:"Shade and cover so sun or rain won't stop the party.",v5h:"Mechanical bull",v5p:"The star attraction. Who can last 8 seconds? Kids and grown-ups line up.",
- "c-eye":"Party calculator","c-h":"How many guests are coming?","c-g":"Guests","c-x":"Add the fun",x1:"Bounce house",x2:"Mechanical bull",x3:"Canopy","c-d":"Event date",
- "r-h":"Your party needs about","r-wa":"Send on WhatsApp","r-copy":"Copy message","r-note":"Estimate at 8 people per table. Packages from $199; Sergio confirms availability and final price.",
- "h-eye":"Easy as that","h-h":"From the call to the party",p1h:"Get a quote",p1p:"Use the calculator or call. Tell us the date, place and how many guests.",p2h:"Book",p2p:"Sergio confirms availability and holds your date.",p3h:"Start bouncing",p3p:"We arrive, set everything up and pick it up when you're done.",
- "k-h":"Book your date before it fills up","k-p":"Weekends book fast. Call or text — we speak English and Spanish.","k-copy":"Copy number",
- tables:"Tables",chairs:"Chairs",canopy:"Canopy",bounce:"Bounce house",toro:"Mechanical bull",yes:"Yes",dateTBD:"date TBD",copied:"Copied!",
- msg:(g,t,c,extras,d)=>`Hi Sergio! I'd like a quote for my party.\nDate: ${d}\nGuests: ${g}\nTables: ${t}\nChairs: ${c}${extras.length?"\nAlso: "+extras.join(", "):""}\nThank you!`},
+ en:{eyebrow:"Bounce Houses · Water Slides · Tables & Chairs · Canopy Tents · Mechanical Bull",h1:"Let's get this party <em>bouncing</em>!",lead:"Wet or dry inflatables plus tables and chairs, all in one package starting at $199. We drop off, set up, and pick up. You just enjoy the party.",cta1:"See Packages",cta2:"Plan Your Party",b1:"Birthdays",b2:"Quinceañeras",b3:"Backyard Parties",b4:"Church Events",
+ "k2-eye":"Backyard Party Packages","k2-h":"One price. Everything you need.",from:"Starting at",wet:"Wet",dry:"or Dry",i1:"Bounce house or water slide",i2:"White folding tables & chairs",i3:"Delivery, setup & pickup",i4:"Clean and safe, every time",ask:"Ask about our $199 Starter Package!",g1:"Castle Combo",g2:"Jungle Combo",g3:"Double Water Slide",g4:"Tables & chairs included",g5:"Bounce House + Play Area",
+ "s-eye":"What We Rent","s-h":"Everything your party needs, all in one place","s-p":"One call books the bounce house, the tables and chairs, and the shade. Less hassle, more fun.",
+ v1h:"Bounce Houses",v1p:"Castles, combos, and water slides. Every unit can be rented wet or dry.",v2h:"Tables",v2p:"Enough tables to seat everyone for food and cake.",v3h:"Chairs",v3p:"As many as you need, dropped off and picked up on time.",v4h:"Canopy Tents",v4p:"Keep your guests cool in the sun and dry in the rain.",v5h:"Mechanical Bull",v5p:"The main event. Who can hang on for 8 seconds? Kids and adults line up for a ride.",
+ "c-eye":"Party Planner","c-h":"How many guests are you expecting?","c-g":"Guests","c-x":"Add the fun",x1:"Bounce house",x2:"Mechanical bull",x3:"Canopy tent","c-d":"Party date",
+ "r-h":"Here's roughly what you'll need","r-wa":"Send via WhatsApp","r-copy":"Copy message","r-note":"Based on 8 guests per table. Packages start at $199. Sergio will confirm availability and your final price.",
+ "h-eye":"How It Works","h-h":"From first call to party time",p1h:"Get a quote",p1p:"Use the planner or give us a call. Let us know the date, location, and headcount.",p2h:"Lock in your date",p2p:"Sergio confirms availability and reserves your date.",p3h:"Let the fun begin",p3p:"We show up, set everything up, and haul it all away when the party's over.",
+ "k-h":"Book your date before it's gone","k-p":"Weekends fill up fast. Call or text us. We speak English and Spanish.","k-copy":"Copy number",
+ tables:"Tables",chairs:"Chairs",canopy:"Canopy tent",bounce:"Bounce house",toro:"Mechanical bull",yes:"Yes",dateTBD:"TBD",copied:"Copied!",
+ msg:(g,t,c,extras,d)=>`Hi Sergio! I'd like to get a quote for a party.\nDate: ${d}\nGuests: ${g}\nTables: ${t}\nChairs: ${c}${extras.length?"\nAdd-ons: "+extras.join(", "):""}\nThanks!`},
  es:{}
 };
 document.querySelectorAll("[data-i]").forEach(el=>T.es[el.dataset.i]=el.innerHTML);
 Object.assign(T.es,{tables:"Mesas",chairs:"Sillas",canopy:"Canopy",bounce:"Brincolín",toro:"Toro mecánico",yes:"Sí",dateTBD:"fecha por definir",copied:"¡Copiado!",
  msg:(g,t,c,extras,d)=>`¡Hola Sergio! Quiero cotizar para mi fiesta.\nFecha: ${d}\nInvitados: ${g}\nMesas: ${t}\nSillas: ${c}${extras.length?"\nTambién: "+extras.join(", "):""}\n¡Gracias!`});
 
-let lang="es";
-try{lang=localStorage.getItem("lang")||"es"}catch(e){}
-function setLang(l){lang=l;try{localStorage.setItem("lang",l)}catch(e){}
+// Opens in the device language: Spanish if the phone/tablet/computer is set to Spanish, English otherwise.
+// A tap on ES/EN is remembered and wins over the device setting.
+function deviceLang(){const list=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||"en"];
+ for(const x of list){const c=String(x).toLowerCase().slice(0,2);if(c==="es")return "es";if(c==="en")return "en";}
+ return "en";}
+let lang=deviceLang();
+try{const saved=localStorage.getItem("lang");if(saved==="es"||saved==="en")lang=saved}catch(e){}
+function setLang(l,save){lang=l;if(save){try{localStorage.setItem("lang",l)}catch(e){}}
  document.documentElement.lang=l;
  document.querySelectorAll("[data-i]").forEach(el=>{const v=T[l][el.dataset.i];if(v)el.innerHTML=v});
  document.getElementById("l-es").setAttribute("aria-pressed",l==="es");
